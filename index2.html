@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Preencher Campos CNAB240</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #303030, #1e1e1e);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            margin-bottom: 24px;
+            color:white;
+        }
+        @keyframes h1 {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        form {
+            background: #393939;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            width: 350px;
+            animation: slide-in 0.8s ease forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        @keyframes slide-in {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            border: 2px dashed rgba(0, 204, 115, 1);
+            border-radius: 10px;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+            transition: border-color 0.3s, background-color 0.3s;
+            border-color: #00CC73;
+            background-color: rgba(0, 204, 115, 0.32);
+        }
+        input[type="file"]::file-selector-button {
+            cursor: pointer;
+        }
+        input[type="file"]:hover {
+            border-color: #00CC73;
+            background-color:  rgba(0, 204, 115, 1);
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #00CC73, #00CC73);
+            background-size: 200%;
+            background-position: left;
+            color: rgb(255, 255, 255);
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-position 0.4s, transform 0.2s, box-shadow 0.2s;
+            outline: none;
+        }
+        button:hover {
+            background-position: right;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px #00CC73;
+        }
+        button:focus {
+            outline: 2px solid #00CC73;
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+<form method="POST" action="/atualizar" enctype="multipart/form-data">
+    <h1>Atualizar Layout CNAB240</h1>
+    <label>Arquivo Layout Técnico CSV:</label><br>
+    <input type="file" name="layout" accept=".csv" required><br><br>
+
+    <label>Arquivo Atualizações CSV:</label><br>
+    <input type="file" name="atualizacoes" accept=".csv" required><br><br>
+
+    <button type="submit">Enviar e Atualizar</button>
+</form>
+</body>
+</html>
