@@ -1,8 +1,12 @@
-from flask import Flask, request, send_file, Response
+from flask import Flask, request, send_file, Response, render_template
 import pandas as pd
 import io
 
 app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return render_template('index2.html')
 
 @app.route('/')
 def home():
@@ -36,7 +40,7 @@ def atualizar():
         return f"Erro ao ler arquivos CSV: {e}", 400
 
     # Verifica se as colunas necessárias estão presentes no df_atualizacoes
-    col_necessarias = ['operação', 'nova_data_vencimento', 'novo_valor_nominal']
+    col_necessarias = ['nova_data_vencimento', 'novo_valor_nominal']
     for c in col_necessarias:
         if c not in df_atualizacoes.columns:
             return f"Erro: arquivo de atualizações precisa conter a coluna '{c}'", 400
